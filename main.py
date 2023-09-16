@@ -23,31 +23,30 @@ def get_product_details(input_string):
     products = aliexpress.get_products_details([API_KEY, input_string])
     return products[0]
 
-
-
-class Link(BaseModel):
+class Requiest (BaseModel):
     link: str
-    shop: str
 
-class Product(BaseModel):
+
+class Response(BaseModel):
+    aff: str
+    shop: str
     name: str
     img: str
+
+
+    
 
 @app.get("/", response_model=str)
 async def start():
     return "hello there !"
 
 # Create an endpoint to create an item
-@app.post("/get-affiliat-link/", response_model=Link)
-async def get_link(item: Link):
+@app.post("/get-affiliat-link/", response_model=Response)
+async def get_link(item: Requiest):
     aff_link =  make_affiliate_links(addsourceType(item.link))
     shop_link = make_affiliate_links("https://www.aliexpress.com/p/shoppingcart/index.html")
-    return  Link(link=aff_link , shop=shop_link)
-
-@app.post("/get-product-detial/", response_model=Product)
-async def get_product(item: Link):
     product = get_product_details(item.link)
-    return Product(name=product.product_title,img=product.product_main_image_url)
+    return  Response(aff=aff_link , shop=shop_link , name=product.product_title,img=product.product_main_image_url)
 
 
 
