@@ -2,7 +2,7 @@ import time
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from aliexpress_api import AliexpressApi, models
-import requests,re
+
 
 
 
