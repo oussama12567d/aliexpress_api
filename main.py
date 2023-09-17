@@ -25,9 +25,6 @@ app = FastAPI()
 
 def addsourceType(input_string):
     parts = input_string.split("?")
-    if(len(parts) == 1):
-        return input_string + '?sourceType=620'
-    else:
         return parts[0] + '?sourceType=620&'+ parts[1]
 
 def make_affiliate_links(input_string):
