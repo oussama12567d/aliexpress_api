@@ -1,1 +1,2 @@
 runtime: python38
+entrypoint:  python main.py
