@@ -149,8 +149,8 @@ def get_the_final_link(url):
     
     
 if __name__ == '__main__':
-    import asyncio
-    asyncio.run(bot.polling(none_stop=True))
+    import uvicorn
+    uvicorn.run(bot.polling())
         
        
    
