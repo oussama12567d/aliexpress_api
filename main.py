@@ -149,6 +149,7 @@ def get_the_final_link(url):
     
     
 if __name__ == '__main__':
+    print('bot started')
     bot.polling()
         
        
