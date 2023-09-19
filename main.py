@@ -149,8 +149,8 @@ def get_the_final_link(url):
     
     
 if __name__ == '__main__':
-    print('bot started')
-    bot.infinity_polling(True)
+    import asyncio
+    asyncio.run(bot.polling(none_stop=True))
         
        
    
